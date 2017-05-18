@@ -1,0 +1,88 @@
+{
+	"ImportPath": "github.com/wujie4/docker-machine-speedycloud",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v75",
+	"Packages": [
+		"github.com/wujie4/docker-machine-speedycloud",
+		"github.com/wujie4/docker-machine-speedycloud/bin"
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/docker/docker/pkg/term",
+			"Comment": "v1.5.0",
+			"Rev": "a8a31eff10544860d2188dddabdee4d727545796"
+		},
+		{
+			"ImportPath": "github.com/docker/machine/libmachine/drivers",
+			"Comment": "v0.8.2",
+			"Rev": "e18a9193d49de4a45ba4b1b6379cad7775481cd2"
+		},
+		{
+			"ImportPath": "github.com/docker/machine/libmachine/drivers/plugin",
+			"Comment": "v0.8.2",
+			"Rev": "e18a9193d49de4a45ba4b1b6379cad7775481cd2"
+		},
+		{
+			"ImportPath": "github.com/docker/machine/libmachine/drivers/plugin/localbinary",
+			"Comment": "v0.8.2",
+			"Rev": "e18a9193d49de4a45ba4b1b6379cad7775481cd2"
+		},
+		{
+			"ImportPath": "github.com/docker/machine/libmachine/drivers/rpc",
+			"Comment": "v0.8.2",
+			"Rev": "e18a9193d49de4a45ba4b1b6379cad7775481cd2"
+		},
+		{
+			"ImportPath": "github.com/docker/machine/libmachine/log",
+			"Comment": "v0.8.2",
+			"Rev": "e18a9193d49de4a45ba4b1b6379cad7775481cd2"
+		},
+		{
+			"ImportPath": "github.com/docker/machine/libmachine/mcnflag",
+			"Comment": "v0.8.2",
+			"Rev": "e18a9193d49de4a45ba4b1b6379cad7775481cd2"
+		},
+		{
+			"ImportPath": "github.com/docker/machine/libmachine/mcnutils",
+			"Comment": "v0.8.2",
+			"Rev": "e18a9193d49de4a45ba4b1b6379cad7775481cd2"
+		},
+		{
+			"ImportPath": "github.com/docker/machine/libmachine/ssh",
+			"Comment": "v0.8.2",
+			"Rev": "e18a9193d49de4a45ba4b1b6379cad7775481cd2"
+		},
+		{
+			"ImportPath": "github.com/docker/machine/libmachine/state",
+			"Comment": "v0.8.2",
+			"Rev": "e18a9193d49de4a45ba4b1b6379cad7775481cd2"
+		},
+		{
+			"ImportPath": "github.com/docker/machine/libmachine/version",
+			"Comment": "v0.8.2",
+			"Rev": "e18a9193d49de4a45ba4b1b6379cad7775481cd2"
+		},
+		{
+			"ImportPath": "github.com/docker/machine/version",
+			"Comment": "v0.8.2",
+			"Rev": "e18a9193d49de4a45ba4b1b6379cad7775481cd2"
+		},
+		{
+			"ImportPath": "github.com/urfave/cli",
+			"Comment": "v1.18.0",
+			"Rev": "1efa31f08b9333f1bd4882d61f9d668a70cd902e"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/curve25519",
+			"Rev": "beef0f4390813b96e8e68fd78570396d0f4751fc"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/ssh",
+			"Rev": "beef0f4390813b96e8e68fd78570396d0f4751fc"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/ssh/terminal",
+			"Rev": "beef0f4390813b96e8e68fd78570396d0f4751fc"
+		}
+	]
+}
