@@ -36,6 +36,7 @@ type Driver struct {
     Bandwidth        int
     ImageType        string
     IpType           string
+    GroupName        string
     client           Client
 }
 
@@ -59,6 +60,7 @@ const (
     defaultImage = "Ubuntu 14.04"
     defaultIpType = "inner"
     defaultUserDate = "/tmp/userdata"
+    defaultGroupName = "cloudos"
 )
 
 func (d *Driver) GetCreateFlags() []mcnflag.Flag {
@@ -178,6 +180,12 @@ func (d *Driver) GetCreateFlags() []mcnflag.Flag {
             Usage:  "ip type of the instance, cloud be outer or inner",
             Value:  defaultIpType,
         },
+        mcnflag.StringFlag{
+            EnvVar: "SPEED_CLOUD_GROUP_NAME",
+            Name:   "speedycloud-group-name",
+            Usage:  "the group of the instance",
+            Value:  defaultGroupName,
+        },
     }
 }
 
@@ -230,6 +238,7 @@ func (d *Driver) SetConfigFromFlags(flags drivers.DriverOptions) error {
     d.Bandwidth = flags.Int("speedycloud-bandwidth")
     d.ImageType = flags.String("speedycloud-image-type")
     d.IpType = flags.String("speedycloud-ip-type")
+    d.GroupName = flags.String("speedycloud-group-name")
     if flags.String("speedycloud-user-data-file") != "" {
         userData, err := ioutil.ReadFile(flags.String("speedycloud-user-data-file"))
         if err == nil {
@@ -352,6 +361,10 @@ func (d *Driver) Create() error {
         return err
     }
     if err := d.lookForIPAddress(); err != nil {
+        return err
+    }
+
+    if err := d.updateInstance(); err != nil {
         return err
     }
     return nil
@@ -601,6 +614,17 @@ func (d *Driver) createMachine() error {
 func (d *Driver) waitForInstanceActive() error {
     log.Debug("Waiting for the SpeedyCloud instance to be running...", map[string]string{"MachineId": d.MachineId})
     if err := d.client.WaitForInstanceStatus(d, "Running"); err != nil {
+        return err
+    }
+    return nil
+}
+
+func (d *Driver) updateInstance() error {
+    log.Debug("update SpeedyCloud instance group and alias", map[string]string{"MachineId": d.MachineId})
+    if err := d.client.UpdateInstanceAlias(d); err != nil {
+        return err
+    }
+    if err := d.client.UpdateInstanceGroup(d); err != nil {
         return err
     }
     return nil

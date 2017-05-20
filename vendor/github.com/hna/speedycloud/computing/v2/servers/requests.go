@@ -157,6 +157,24 @@ func Get(client *speedycloud.ServiceClient, id string) GetResult {
 	return result
 }
 
+func Alias(client *speedycloud.ServiceClient, id string, aliasName string) UpdateResult {
+    var result UpdateResult
+    _, result.Err = client.Post(actionURL(client, id, "alias"),
+        bytes.NewBufferString(fmt.Sprintf("alias=%s", aliasName)),
+        &result.Body,
+        nil)
+    return result
+}
+
+func Group(client *speedycloud.ServiceClient, id string, groupName string) UpdateResult {
+    var result UpdateResult
+    _, result.Err = client.Post(actionURL(client, id, "group"),
+        bytes.NewBufferString(fmt.Sprintf("group=%s", groupName)),
+        &result.Body,
+        nil)
+    return result
+}
+
 // UpdateOptsBuilder allows extensions to add additional attributes to the Update request.
 //type UpdateOptsBuilder interface {
 //	ToServerUpdateMap() map[string]interface{}

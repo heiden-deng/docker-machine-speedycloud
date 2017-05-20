@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;docker-machine-speedycloud&gt;">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../ec2-54-222-174-220.cn-north-1.compute.amazonaws.com.cn" />
+      <root url="file://$PROJECT_DIR$/../../../local" />
+      <root url="file://$PROJECT_DIR$/../.." />
+      <root url="file://$PROJECT_DIR$/../../../golang.org" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../../ec2-54-222-174-220.cn-north-1.compute.amazonaws.com.cn" />
+      <root url="file://$PROJECT_DIR$/../../../local" />
+      <root url="file://$PROJECT_DIR$/../.." />
+      <root url="file://$PROJECT_DIR$/../../../golang.org" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>

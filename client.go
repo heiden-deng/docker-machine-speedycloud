@@ -32,6 +32,8 @@ type Client interface {
 	CreateKeyPair(d *Driver, name string, publicKey string) error
 	DeleteKeyPair(d *Driver, name string) error
     GetKeyPairID(d *Driver, name string) (string, error)
+    UpdateInstanceGroup(d *Driver) error
+    UpdateInstanceAlias(d *Driver) error
 	//GetNetworkID(d *Driver) (string, error)
 	//GetFlavorID(d *Driver) (string, error)
 	//GetImageID(d *Driver) (string, error)
@@ -138,6 +140,24 @@ func (c *GenericClient) DeleteInstance(d *Driver) error {
 		return result.Err
 	}
 	return nil
+}
+
+func (c *GenericClient) UpdateInstanceGroup(d *Driver) error {
+	if d.GroupName != "" {
+		if result := servers.Group(c.Compute, d.MachineId, d.GroupName); result.Err != nil {
+			return result.Err
+		}
+	}
+	return nil
+}
+
+func (c *GenericClient) UpdateInstanceAlias(d *Driver) error {
+    if d.MachineName != "" {
+        if result := servers.Alias(c.Compute, d.MachineId, d.MachineName); result.Err != nil {
+            return result.Err
+        }
+    }
+    return nil
 }
 
 func (c *GenericClient) WaitForInstanceStatus(d *Driver, status string) error {
@@ -291,6 +311,7 @@ func (c *GenericClient) GetServerDetail(d *Driver) (*servers.Server, error) {
 	}
 	return server, nil
 }
+
 
 //func (c *GenericClient) AssignFloatingIP(d *Driver, floatingIP *FloatingIP) error {
 //	if d.ComputeNetwork {

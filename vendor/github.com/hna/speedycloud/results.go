@@ -71,7 +71,7 @@ its methods will be available on a wide variety of user-facing embedding types.
 
 It represents a result that only contains an error (possibly nil) and an
 http.Header. This is used, for example, by the objectstorage packages in
-openstack, because most of the operations don't return response bodies, but do
+speedycloud, because most of the operations don't return response bodies, but do
 have relevant information in headers.
 */
 type HeaderResult struct {
